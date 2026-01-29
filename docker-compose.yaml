@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: ./deploy/dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./gateway/src:/app/src
+    depends_on:
+      - payment
+      - users
+
+  payment:
+    build:
+      context: ./payment
+      dockerfile: ./deploy/dockerfile.dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./payment/src:/app/src
+
+  users:
+    build:
+      context: ./users
+      dockerfile: ./deploy/dockerfile.dev
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./users/src:/app/src

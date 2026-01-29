@@ -8,8 +8,8 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
+app.get("/", (_, res) => {
+  res.send("Hello Woorld");
 });
 
 PaymentController(app);
