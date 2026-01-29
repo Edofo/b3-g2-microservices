@@ -16,5 +16,14 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install dependencies
+      - name: Install dependencies for gateway
         run: npm ci
+        working-directory: ./gateway
+
+      - name: Install dependencies for payment
+        run: npm ci
+        working-directory: ./payment
+
+      - name: Install dependencies for users
+        run: npm ci
+        working-directory: ./users
